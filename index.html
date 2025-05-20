@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Responsive Webpages</title>
   <style>
+    /* Basic Reset */
     * {
       margin: 0;
       padding: 0;
@@ -47,7 +48,7 @@
       font-weight: normal;
       font-size: clamp(1.5rem, 3vw, 5vh);
       margin-bottom: 0.2rem;
-      white-space: nowrap;
+      white-space: nowrap; /* Prevent breaking logo title */
     }
 
     .logo h5 {
@@ -57,98 +58,22 @@
       margin-top: 0.2rem;
       white-space: nowrap;
     }
+@media (max-width: 600px) {
+  .logo {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 
-    @media (max-width: 600px) {
-      .logo {
-        flex-wrap: nowrap; /* Keep logo on one line */
-        align-items: center; /* vertical center */
-        gap: 8px;
-      }
+  .logo h1 {
+    font-size: 1.5rem; /* smaller font for mobile */
+    white-space: nowrap; /* prevent text from breaking into multiple lines */
+  }
 
-      .logo > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        white-space: nowrap;
-      }
-
-      .logo h1,
-      .logo h5 {
-        white-space: nowrap;
-        margin: 0;
-      }
-
-      .logo img {
-        width: 40px;
-        height: 40px;
-      }
-
-      nav {
-        position: fixed;
-        top: 65px;
-        right: 0;
-        background-color: #194963;
-        height: calc(100% - 65px);
-        width: 220px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-        gap: 0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        overflow-y: auto;
-        z-index: 20;
-        border-radius: 0 0 0 10px;
-      }
-
-      nav.active {
-        transform: translateX(0);
-      }
-
-      nav a {
-        padding: 1rem 1rem;
-        width: 100%;
-        font-size: 1.1rem;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      nav button.dropdown-btn {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        font-size: 1.1rem;
-        padding: 1rem 1rem;
-      }
-
-      .dropdown-content {
-        position: relative;
-        box-shadow: none;
-        margin-top: 0;
-        background: #2c5a82;
-        display: none;
-        flex-direction: column;
-        padding-left: 1rem;
-        border-radius: 0 0 8px 8px;
-      }
-
-      .dropdown-content a {
-        font-size: 1rem;
-        padding: 0.6rem 1rem;
-      }
-
-      .dropdown-content.active {
-        display: flex;
-      }
-
-      .dropdown:hover > .dropdown-content {
-        display: none;
-      }
-
-      .burger {
-        display: flex;
-      }
-    }
+  .logo h5 {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
 
     nav {
       display: flex;
@@ -162,7 +87,7 @@
       color: white;
       text-decoration: none;
       font-family: "Times New Roman", cursive;
-      font-size: clamp(1rem, 2vw, 1.8rem);
+      font-size: clamp(1rem, 2vw, 1.8rem); /* Slightly smaller max */
       background: none;
       border: none;
       cursor: pointer;
@@ -232,6 +157,74 @@
       border-radius: 2px;
     }
 
+    @media (max-width: 600px) {
+      nav {
+        position: fixed;
+        top: 65px;
+        right: 0;
+        background-color: #194963;
+        height: calc(100% - 65px);
+        width: 220px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 20;
+        border-radius: 0 0 0 10px;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav a {
+        padding: 1rem 1rem;
+        width: 100%;
+        font-size: 1.1rem; /* Fixed font size for better control */
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      nav button.dropdown-btn {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        padding: 1rem 1rem;
+      }
+
+      .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        margin-top: 0;
+        background: #2c5a82;
+        display: none;
+        flex-direction: column;
+        padding-left: 1rem;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .dropdown-content a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+      }
+
+      .dropdown-content.active {
+        display: flex;
+      }
+
+      .dropdown:hover > .dropdown-content {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
     .hero {
       background: url('c3.jpg') no-repeat center center / cover;
       height: 50vh;
@@ -248,11 +241,11 @@
     }
 
     .products {
-      max-width: 1200px;
+      max-width: 1600px; /* Increased width for larger desktop screens */
       margin: 2rem auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Bigger min width */
+      gap: 2rem; /* Slightly larger gaps */
       padding: 0 1rem;
     }
 
@@ -273,8 +266,8 @@
 
     .product-card img {
       width: 100%;
-      height: auto;
-      max-height: 200px;
+      height: auto; /* Keep aspect ratio */
+      max-height: 300px; /* Increased max height */
       object-fit: cover;
       flex-shrink: 0;
     }
@@ -344,22 +337,41 @@
     </div>
   </div>
   <div class="product-card">
-    <img src="h2.jpg" alt="Craft Product 3" />
-    <div class="product-info">
-      <h3>Jewelry</h3>
-      <p>Each piece blends elegance with everyday style to tell your unique story.</p>
-    </div>
+  <img src="h2.jpg" alt="Craft Product 3" />
+  <div class="product-info">
+    <h3>Ethnic Collection</h3>
+    <p>Celebrate tradition with vibrant handcrafted ethnic pieces.</p>
   </div>
-  <div class="product-card">
-    <img src="h3.webp" alt="Craft Product 4" />
-    <div class="product-info">
-      <h3>Fashion Accessories</h3>
-      <p>Handmade accessories that make your outfits truly stand out.</p>
-    </div>
+</div>
+
+<div class="product-card">
+  <img src="h5.webp" alt="Craft Product 4" />
+  <div class="product-info">
+    <h3>Jewelry</h3>
+    <p>Adorn yourself with exquisite handmade jewelry.</p>
   </div>
+</div>
+
+<div class="product-card">
+  <img src="h3.jpg" alt="Craft Product 5" />
+  <div class="product-info">
+    <h3>Beauty &amp; Self care</h3>
+    <p>Natural, handmade products for your skin and soul.</p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="h6.jpg" alt="Craft Product 6" />
+  <div class="product-info">
+    <h3>Pottery</h3>
+    <p>Handcrafted ceramics that blend art and utility.</p>
+  </div>
+</div>
+
 </section>
 
 <script>
+  // Toggle navigation on mobile
   const burger = document.getElementById('burger');
   const navMenu = document.getElementById('nav-menu');
 
@@ -367,13 +379,13 @@
     navMenu.classList.toggle('active');
   });
 
+  // Accessibility: allow toggling nav with keyboard
   burger.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
       navMenu.classList.toggle('active');
     }
   });
 </script>
-
 </body>
 </html>
+
