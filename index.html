@@ -58,6 +58,22 @@
       margin-top: 0.2rem;
       white-space: nowrap;
     }
+@media (max-width: 600px) {
+  .logo {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem; /* smaller font for mobile */
+    white-space: nowrap; /* prevent text from breaking into multiple lines */
+  }
+
+  .logo h5 {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
 
     nav {
       display: flex;
