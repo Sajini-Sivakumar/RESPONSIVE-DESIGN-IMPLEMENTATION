@@ -4,263 +4,277 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Responsive Webpages</title>
- <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background: #fff;
-    color: #333;
-  }
-
-  header {
-    background: #194963;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    font-family: "Times New Roman", "Cursive";
-  }
-
-  .logo img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-  }
-
-  .logo h1 {
-    font-weight: normal;
-    font-size: clamp(1.5rem, 3vw, 5vh);
-    margin-bottom: 0.2rem;
-  }
-
-  .logo h5 {
-    font-family: 'Edwardian Script ITC', cursive;
-    font-size: clamp(1rem, 2.5vw, 1.8rem);
-    font-weight: normal;
-    margin-top: 0.2rem;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    font-weight: 700;
-  }
-
-  nav a,
-  nav button.dropdown-btn {
-    color: white;
-    text-decoration: none;
-    font-family: "Times New Roman", cursive;
-    font-size: clamp(1rem, 2.5vw, 3vh);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.3rem 0.5rem;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  nav a:hover,
-  nav button.dropdown-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #194963;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    flex-direction: column;
-  }
-
-  .dropdown-content a {
-    color: white;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    font-size: clamp(1rem, 2.5vw, 3vh);
-    display: block;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #2e6a9e;
-  }
-
-  @media (min-width: 601px) {
-    .dropdown:hover>.dropdown-content {
-      display: flex;
-    }
-
-    nav button.dropdown-btn {
-      display: none;
-    }
-  }
-
-  .burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    width: 30px;
-    height: 25px;
-    justify-content: space-between;
-  }
-
-  .burger div {
-    height: 4px;
-    background: white;
-    border-radius: 2px;
-  }
-
-  @media (max-width: 600px) {
-    nav {
-      position: fixed;
-      top: 65px;
-      right: 0;
-      background-color: #194963;
-      height: calc(100% - 65px);
-      width: 220px;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 1rem;
-      gap: 0;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      overflow-y: auto;
-      z-index: 20;
-      border-radius: 0 0 0 10px;
-    }
-
-    nav.active {
-      transform: translateX(0);
-    }
-
-    nav a {
-      padding: 0.8rem 1rem;
-      width: 100%;
-      font-size: 5vw;
+  <style>
+    /* Basic Reset */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    nav button.dropdown-btn {
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    header {
+      background: #194963;
+      color: white;
+      padding: 1rem 2rem;
       display: flex;
-      width: 100%;
       justify-content: space-between;
-      font-size: 5vw;
-      padding: 0.8rem 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-family: "Times New Roman", "Cursive";
+    }
+
+    .logo img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+
+    .logo h1 {
+      font-weight: normal;
+      font-size: clamp(1.5rem, 3vw, 5vh);
+      margin-bottom: 0.2rem;
+      white-space: nowrap; /* Prevent breaking logo title */
+    }
+
+    .logo h5 {
+      font-family: 'Edwardian Script ITC', cursive;
+      font-size: clamp(1rem, 2.5vw, 1.8rem);
+      font-weight: normal;
+      margin-top: 0.2rem;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-weight: 700;
+    }
+
+    nav a,
+    nav button.dropdown-btn {
+      color: white;
+      text-decoration: none;
+      font-family: "Times New Roman", cursive;
+      font-size: clamp(1rem, 2vw, 1.8rem); /* Slightly smaller max */
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav button.dropdown-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown {
+      position: relative;
     }
 
     .dropdown-content {
-      position: relative;
-      box-shadow: none;
-      margin-top: 0;
-      background: #2c5a82;
       display: none;
+      position: absolute;
+      background-color: #194963;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      border-radius: 4px;
+      margin-top: 0.5rem;
       flex-direction: column;
-      padding-left: 1rem;
-      border-radius: 0 0 8px 8px;
     }
 
     .dropdown-content a {
-      font-size: 4vw;
-      padding: 0.6rem 1rem;
+      color: white;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      display: block;
     }
 
-    .dropdown-content.active {
-      display: flex;
+    .dropdown-content a:hover {
+      background-color: #2e6a9e;
     }
 
-    .dropdown:hover>.dropdown-content {
-      display: none;
+    @media (min-width: 601px) {
+      .dropdown:hover > .dropdown-content {
+        display: flex;
+      }
+
+      nav button.dropdown-btn {
+        display: none;
+      }
     }
 
     .burger {
-      display: flex;
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      justify-content: space-between;
     }
-  }
 
-  .hero {
-    background: url('c3.jpg') no-repeat center center / cover;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: clamp(1.2rem, 5vw, 2.5rem);
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    margin-top: 1rem;
-    padding: 0 1rem;
-  }
+    .burger div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
 
-  .products {
-    max-width: 1200px;
-    margin: 2rem auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
+    @media (max-width: 600px) {
+      nav {
+        position: fixed;
+        top: 65px;
+        right: 0;
+        background-color: #194963;
+        height: calc(100% - 65px);
+        width: 220px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 20;
+        border-radius: 0 0 0 10px;
+      }
 
-  .product-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    cursor: pointer;
-  }
+      nav.active {
+        transform: translateX(0);
+      }
 
-  .product-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
+      nav a {
+        padding: 1rem 1rem;
+        width: 100%;
+        font-size: 1.1rem; /* Fixed font size for better control */
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-  .product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
+      nav button.dropdown-btn {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        padding: 1rem 1rem;
+      }
 
-  .product-info {
-    padding: 1rem;
-  }
+      .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        margin-top: 0;
+        background: #2c5a82;
+        display: none;
+        flex-direction: column;
+        padding-left: 1rem;
+        border-radius: 0 0 8px 8px;
+      }
 
-  .product-info h3 {
-    margin-bottom: 0.5rem;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-  }
+      .dropdown-content a {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+      }
 
-  .product-info p {
-    color: #666;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
-  }
-</style>
+      .dropdown-content.active {
+        display: flex;
+      }
 
+      .dropdown:hover > .dropdown-content {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
+    .hero {
+      background: url('c3.jpg') no-repeat center center / cover;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: clamp(1.2rem, 5vw, 2.5rem);
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-top: 1rem;
+      padding: 0 1rem;
+    }
+
+    .products {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto; /* Changed to auto to keep aspect ratio */
+      max-height: 200px; /* max height but allow shrink */
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .product-info {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-info h3 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+    }
+
+    .product-info p {
+      color: #666;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      line-height: 1.3;
+    }
+  </style>
 </head>
 <body>
 
@@ -273,13 +287,13 @@
     </div>
   </div>
 
-  <div class="burger" id="burger">
+  <div class="burger" id="burger" aria-label="Toggle navigation menu" role="button" tabindex="0">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
-  <nav id="nav-menu">
+  <nav id="nav-menu" aria-label="Primary navigation">
     <a href="#">Home</a>
     <a href="#">Shop</a>
     <a href="#">About</a>
@@ -328,6 +342,32 @@
 
   burger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+  });
+
+  // Accessibility: Allow burger toggle with Enter or Space keys
+  burger.addEventListener('keydown', (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
+    }
+  });
+
+  // Close nav menu when a link is clicked (for small screens)
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+    });
+  });
+
+  // Close nav menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (
+      !navMenu.contains(e.target) &&
+      !burger.contains(e.target) &&
+      navMenu.classList.contains('active')
+    ) {
+      navMenu.classList.remove('active');
+    }
   });
 </script>
 
