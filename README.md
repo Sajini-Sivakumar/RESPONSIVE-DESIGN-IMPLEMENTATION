@@ -21,3 +21,9 @@ The next important part is the card design. I used cards to display products or 
 To make the page responsive, I used CSS media queries. These allow the webpage to detect the screen size and change styles accordingly. For example, if the screen width is below 768 pixels (a common size for tablets or phones), the layout will adjust: the navigation bar becomes a hamburger menu, the text size changes slightly for better readability, and the card layout switches to a single column.
 
 I also made sure to use flexbox and grid layouts in CSS to align and space out elements properly. This helps the content stay centered and evenly spaced, whether on a wide or narrow screen.Overall, the design adapts seamlessly, ensuring accessibility and ease of use across all screen sizes.
+
+**OUTPUT:**
+
+![Image](https://github.com/user-attachments/assets/960d36fa-6c17-4af6-8b56-4151d15598d4)
+
+![Image](https://github.com/user-attachments/assets/24f3c0d4-aca1-4040-bf05-298e6d3d30eb)
