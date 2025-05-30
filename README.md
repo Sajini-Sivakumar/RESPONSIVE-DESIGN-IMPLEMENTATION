@@ -12,6 +12,8 @@
 
 **MENTOR :** NEELA SANTHOSH
 
+**SOFTWARE USED:** HTML,CSS,JAVASCRIPT,XAMPP
+
 For this project, I created a responsive webpage for a fictional brand called Homemade Heaven. The main goal of the design was to make sure the website works well and looks good on all screen sizes—whether someone is using a laptop, tablet, or mobile phone. I achieved this by using HTML for the structure, CSS for styling, and a bit of JavaScript for interactivity.
 
 The navigation bar is placed at the top of the page. On larger screens, it shows all the menu items in a row, like “Home,” “Products,” “About,” and “Contact.” But when the website is viewed on a smaller screen, like a phone, these links don’t fit well in a straight line. So, I used a hamburger icon for mobile view. A hamburger icon is a simple three-line menu button. When clicked, it opens a side menu or dropdown where the user can see all the navigation links. This keeps the design clean and easy to use, even on smaller screens.
